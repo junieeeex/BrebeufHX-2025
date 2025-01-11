@@ -11,7 +11,7 @@ def extract_coords(address,key):
     lat, lng = None, None
     api_key = key
     base_url = "https://maps.googleapis.com/maps/api/geocode/json"
-    endpoint = f"{base_url}?address={address}&key={api_key}"
+    endpoint = base_url + "?address=" + address + "&key=" + api_key
     # see how our endpoint includes our API key? Yes this is yet another reason to restrict the key
     r = requests.get(endpoint)
     if r.status_code not in range(200, 299):

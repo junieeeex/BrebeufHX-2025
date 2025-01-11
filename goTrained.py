@@ -43,6 +43,8 @@ places=api.search_places_by_coordinate("40.819057,-73.914048", "100", "restauran
 
 fields=['name','formatted_address']
 
+chains=["Starbucks","McDonald's","Tim Horton's","A&W","Burger King","Dominos"]
+
 for place in places:
     details=api.get_place_details(place['place_id'],fields)
     try:
