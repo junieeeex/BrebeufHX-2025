@@ -42,21 +42,48 @@ api=GooglePlaces('AIzaSyB8N3cgIEi8Ww2igo5I_uY9ikn9YocvNKk')
 
 
 coordinates = "45.5016286, -73.6235556"
-radius = 500
-place_type = "bar"
-places=api.search_places_by_coordinate(coordinates, str(radius), place_type)
+radius = "500"
+place_type = "restaurant"
+places=api.search_places_by_coordinate("45.49779934532756, -73.57260347008115", "300", "restaurant")
 
 fields=['name','formatted_address', 'url']
 
+<<<<<<< HEAD:goTrained.py
 chains=["Starbucks","McDonald's","Tim Horton's","A&W","Burger King","Dominos"]
 
+=======
+international_chains = [
+    "McDonald's",
+    "Burger King",
+    "KFC",
+    "Subway",
+    "Starbucks",
+    "Domino's Pizza",
+    "Pizza Hut",
+    "Taco Bell",
+    "Dunkin' Donuts",
+    "Popeyes",
+    "Wendy's",
+    "Tim Hortons",
+    "Five Guys",
+    "Chipotle Mexican Grill",
+    "A&W",
+    "Hard Rock Cafe",
+    "Denny's",
+    "Pret A Manger",
+    "HOOTERS"
+]
+local_places = []
+>>>>>>> d8f4c6d (WORKS):App/GooglePlaces.py
 for place in places:
     details=api.get_place_details(place['place_id'],fields)
     try:
         name = details['result']['name']
+        if(name in international_chains):
+            continue
     except KeyError:
         name = ""
- 
+
     try:
         address = details['result']['formatted_address']
     except KeyError:
@@ -66,7 +93,14 @@ for place in places:
         url = details['result']['url']
     except KeyError:
         address = ""
- 
-    print("Name:", name)
-    print("Address:", address)
-    print("Url:", url)
+
+    local_places.append([name, address, url])
+
+
+for place in local_places:
+
+    print("Name:", place[0])
+    print("Address:", place[1])
+    print("Url:", place[2])
+
+

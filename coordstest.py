@@ -5,7 +5,7 @@ apiKey="AIzaSyB8N3cgIEi8Ww2igo5I_uY9ikn9YocvNKk"
 
 #if i get an error in this section it could be because i enabled the geocoding api after i had already created the key
 #also i removed the accents from that address cuase theyve caused problems before but that could make it invalid idk
-userLocation='H3T 1C1'
+userLocation='3200 Chem. de la Côte-Sainte-Catherine, Montréal, QC H3T 1C1'
 
 def extract_coords(address,key):
     lat, lng = None, None

@@ -37,30 +37,3 @@ def extract_coords(address,key):
         pass
     return (lat,lng)
 
-coords=extract_coords(userLocation,apiKey)
-#this would be set by the user but try to keep low in demos to keep requests to a minimum
-radius=100
-
-
-results=[]
-
-#code for types
-for tag in types:
-    response=map_client.places_nearby(location=coords,type=tag,rankby='distance',radius=radius)
-    results.extend(response['result'])
-    #in most example codes theyll tell you to then do a next pagr but likr is that necessary considering were doing multiple
-
-#code for keywords in case we need it
-#for tag in keywords:
-    #parameters might be in the wrong order here
-    #response=map_client.places_nearby(location=coords,keyword=tag,rankby='distance',radius=radius)
-    #results.extend(response['result'])
-
-
-#in theory at this point we have a list containing max 20 items for each type/keyword put in
-
-#this functions as a way to confirm im getting results but i need a better way to display
-print(len(results))
-
-#im lowkey scared that theres a step missing 
-df=pd.DataFrame(results)
