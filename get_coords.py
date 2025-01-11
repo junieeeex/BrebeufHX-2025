@@ -37,3 +37,4 @@ def extract_coords(address,key):
         pass
     return (lat,lng)
 
+print(extract_coords(userLocation, apiKey))
