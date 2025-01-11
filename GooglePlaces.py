@@ -48,10 +48,6 @@ places=api.search_places_by_coordinate("45.49779934532756, -73.57260347008115", 
 
 fields=['name','formatted_address', 'url']
 
-<<<<<<< HEAD:goTrained.py
-chains=["Starbucks","McDonald's","Tim Horton's","A&W","Burger King","Dominos"]
-
-=======
 international_chains = [
     "McDonald's",
     "Burger King",
@@ -74,7 +70,6 @@ international_chains = [
     "HOOTERS"
 ]
 local_places = []
->>>>>>> d8f4c6d (WORKS):App/GooglePlaces.py
 for place in places:
     details=api.get_place_details(place['place_id'],fields)
     try:
