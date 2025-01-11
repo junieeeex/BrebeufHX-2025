@@ -39,9 +39,14 @@ class GooglePlaces(object):
         return place_details
     
 api=GooglePlaces('AIzaSyB8N3cgIEi8Ww2igo5I_uY9ikn9YocvNKk')
-places=api.search_places_by_coordinate("40.819057,-73.914048", "100", "restaurant")
 
-fields=['name','formatted_address']
+
+coordinates = "45.5016286, -73.6235556"
+radius = 500
+place_type = "bar"
+places=api.search_places_by_coordinate(coordinates, str(radius), place_type)
+
+fields=['name','formatted_address', 'url']
 
 chains=["Starbucks","McDonald's","Tim Horton's","A&W","Burger King","Dominos"]
 
@@ -56,6 +61,12 @@ for place in places:
         address = details['result']['formatted_address']
     except KeyError:
         address = ""
+
+    try:
+        url = details['result']['url']
+    except KeyError:
+        address = ""
  
     print("Name:", name)
     print("Address:", address)
+    print("Url:", url)
