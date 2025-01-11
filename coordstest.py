@@ -1,6 +1,5 @@
 import googlemaps
 import requests
-import pandas as pd
 
 apiKey="AIzaSyB8N3cgIEi8Ww2igo5I_uY9ikn9YocvNKk"
 

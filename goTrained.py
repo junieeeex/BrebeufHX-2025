@@ -40,3 +40,20 @@ class GooglePlaces(object):
     
 api=GooglePlaces('AIzaSyB8N3cgIEi8Ww2igo5I_uY9ikn9YocvNKk')
 places=api.search_places_by_coordinate("40.819057,-73.914048", "100", "restaurant")
+
+fields=['name','formatted_address']
+
+for place in places:
+    details=api.get_place_details(place['place_id'],fields)
+    try:
+        name = details['result']['name']
+    except KeyError:
+        name = ""
+ 
+    try:
+        address = details['result']['formatted_address']
+    except KeyError:
+        address = ""
+ 
+    print("Name:", name)
+    print("Address:", address)
